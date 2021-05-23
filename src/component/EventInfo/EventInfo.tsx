@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Descriptions } from 'antd'
 
 const DEFAULT_NO_DATA = 'NO DATA'
 
-const EventInfo: React.FC<EventData> = ({
+interface EventInfoProps extends EventData {
+  actions: any
+  id: number
+}
+
+const EventInfo: React.FC<EventInfoProps> = ({
   name = DEFAULT_NO_DATA,
   description = DEFAULT_NO_DATA,
   start_date = DEFAULT_NO_DATA,
@@ -11,7 +16,15 @@ const EventInfo: React.FC<EventData> = ({
   type = DEFAULT_NO_DATA,
   state = DEFAULT_NO_DATA,
   short_name = DEFAULT_NO_DATA,
+  actions: { fetchEventInfo },
+  id,
 }) => {
+  useEffect(() => {
+    if (name === DEFAULT_NO_DATA) {
+      fetchEventInfo(id)
+    }
+  }, [fetchEventInfo, name, id])
+
   return (
     <div>
       <Descriptions title={name}>

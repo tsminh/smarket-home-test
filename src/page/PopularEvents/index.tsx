@@ -5,7 +5,7 @@ import { EventState } from '../../reducer/events/eventReducer'
 import { fetchPopularEvents } from '../../reducer/events/actions'
 import { useEffect } from 'react'
 import EventThumbnail from '../../component/EventThumbnail'
-import { Link } from 'react-router-dom'
+import { Link, Redirect, useRouteMatch } from 'react-router-dom'
 
 interface PopularEventsProps {
   isFetching?: boolean
@@ -20,9 +20,14 @@ const PopularEvents: React.FC<PopularEventsProps> = ({
   actions: { fetchPopularEvents },
   cat,
 }) => {
+  const match = useRouteMatch('/sport/:cat') as any
   useEffect(() => {
     fetchPopularEvents(cat)
   }, [cat, fetchPopularEvents])
+
+  if (match && match.params.cat !== cat) {
+    return <Redirect to="/" />
+  }
 
   if (isFetching) return <Spin />
   return (

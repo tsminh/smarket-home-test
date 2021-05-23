@@ -3,16 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.23",
-    "@types/node": "^15.6.0",
-    "@types/react": "^17.0.6",
-    "@types/react-dom": "^17.0.5",
     "antd": "^4.15.6",
     "axios": "^0.21.1",
-    "http-proxy-middleware": "^2.0.0",
     "node-sass": "^6.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -26,6 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:mock-api": "cross-env MOCK=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -49,8 +42,17 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.6.0",
+    "@types/react": "^17.0.6",
+    "@types/react-dom": "^17.0.5",
     "@types/react-router-dom": "^5.1.7",
     "cloudscraper": "^4.6.0",
+    "cross-env": "^7.0.3",
+    "http-proxy-middleware": "^2.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "express": "^4.17.1",

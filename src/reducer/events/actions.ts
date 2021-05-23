@@ -27,10 +27,30 @@ export function fetchPopularEvents(cat: string) {
 
       const eventData = await axios.get(api.getEventDetail(id))
 
+      if (eventData.data.events && eventData.data.events[0]) {
+        dispatch({
+          type: EVENT_FETCH_FINISH,
+          data: { id, value: eventData.data.events[0] },
+        })
+      }
+    })
+  }
+}
+
+export function fetchEventInfo(id: number) {
+  return async (dispatch: Dispatch) => {
+    dispatch({
+      type: EVENT_FETCH_START,
+      data: { id },
+    })
+
+    const eventData = await axios.get(api.getEventDetail(id))
+
+    if (eventData.data.events && eventData.data.events[0]) {
       dispatch({
         type: EVENT_FETCH_FINISH,
         data: { id, value: eventData.data.events[0] },
       })
-    })
+    }
   }
 }

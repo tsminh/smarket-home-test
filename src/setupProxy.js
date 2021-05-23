@@ -1,6 +1,6 @@
 const { createProxyMiddleware } = require('http-proxy-middleware')
 
-const isMockAPI = true
+const isMockAPI = process.env.MOCK
 
 // if isMockApi is true, then it will always response the static data
 // since I can't get the real response from vietname (being blocked by Cloudflare)
@@ -36,7 +36,7 @@ module.exports = function (app) {
         }
       : createProxyMiddleware({
           target: 'http://api.smarkets.com/v3/',
-          changeOrigin: true,
+          changeOrigin: false,
         })
   )
 }

@@ -1,6 +1,8 @@
 import EventInfo from './EventInfo'
 import { connect } from 'react-redux'
 import { EventState } from '../../reducer/events/eventReducer'
+import { bindActionCreators } from 'redux'
+import { fetchEventInfo } from '../../reducer/events/actions'
 
 function mapStateToProps(state: EventState, props: any) {
   const { id } = props
@@ -11,4 +13,10 @@ function mapStateToProps(state: EventState, props: any) {
   }
 }
 
-export default connect(mapStateToProps, null)(EventInfo)
+function mapDispatchToProps(dispatch: any) {
+  return {
+    actions: bindActionCreators({ fetchEventInfo }, dispatch),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventInfo)
