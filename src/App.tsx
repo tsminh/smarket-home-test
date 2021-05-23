@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
 
 import styles from './index.module.scss'
+import PopularEvents from './page/PopularEvents'
+import EventDetail from './page/EventDetail'
 
 const { Content, Sider } = Layout
 
@@ -28,15 +30,20 @@ const SIDE_BAR_SPORTS = [
 ]
 
 const App = () => {
+  const [tab, setTab] = useState(SIDE_BAR_SPORTS[0].key)
   const history = useHistory()
 
   return (
     <Layout className={styles['main-app']}>
       <Sider>
         <Menu
+          defaultSelectedKeys={[SIDE_BAR_SPORTS[0].key]}
           theme="dark"
           mode="inline"
-          onClick={({ key }) => history.push(`/sport/${key}`)}
+          onClick={({ key }) => {
+            history.push(`/sport/${key}`)
+            setTab(key as string)
+          }}
         >
           {SIDE_BAR_SPORTS.map((sport) => (
             <Menu.Item key={sport.key}>{sport.name}</Menu.Item>
@@ -46,8 +53,12 @@ const App = () => {
       <Layout>
         <Content className={styles['content']}>
           <Switch>
-            <Route path="/sport/:tab">123</Route>
-            <Route path="/event/:id">123</Route>
+            <Route path="/sport/:tab">
+              <PopularEvents cat={tab} />
+            </Route>
+            <Route path="/event/:id">
+              <EventDetail />
+            </Route>
             <Redirect to={`/sport/${SIDE_BAR_SPORTS[0].key}`} />
           </Switch>
         </Content>

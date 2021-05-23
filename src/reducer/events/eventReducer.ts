@@ -5,8 +5,8 @@ import {
   EVENT_FETCH_START,
 } from './constants'
 
-interface EventState {
-  events: EventData[]
+export interface EventState {
+  events: Record<number, EventData>
   popularEvents: Record<string, number[]>
   eventsFetching: Record<number, boolean>
   isFetchingPopular: boolean
@@ -61,5 +61,8 @@ export default function eventDataReducer(
         },
       }
     }
+
+    default:
+      return initialState
   }
 }

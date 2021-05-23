@@ -1,4 +1,4 @@
-const apiRoot = 'https://api.smarkets.com/v3'
+const apiRoot = '/api'
 
 export const getPopularEventsByCat = (cat: string) =>
   `${apiRoot}/popular/event_ids/sport/${cat}/`
