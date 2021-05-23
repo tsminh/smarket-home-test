@@ -1,4 +1,4 @@
-const apiRoot = '/api'
+const apiRoot = '/v3'
 
 export const getPopularEventsByCat = (cat: string) =>
   `${apiRoot}/popular/event_ids/sport/${cat}/`

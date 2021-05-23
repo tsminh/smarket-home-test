@@ -7,7 +7,7 @@ const isMockAPI = process.env.MOCK
 
 module.exports = function (app) {
   app.use(
-    '/api',
+    '/v3',
     isMockAPI
       ? (req, res) => {
           const { url } = req
@@ -35,8 +35,8 @@ module.exports = function (app) {
           }
         }
       : createProxyMiddleware({
-          target: 'http://api.smarkets.com/v3/',
-          changeOrigin: false,
+          target: 'http://api.smarkets.com',
+          changeOrigin: true,
         })
   )
 }
