@@ -1,14 +1,14 @@
 ### Overview
 
 1. Popular events page:
-   ![first visit](./docs/img1.png)
+   ![first visit](./docs/img1.PNG)
 
 Sidebar: Sport categories, I made them hard-coded category for: Football, Motosport, Cycle and Horse racing. We can modify this in the code (simply add more into an array)
 
 When click on event, it will direct you to event detail page.
 
 2. Event detail page:
-   ![event detail](./docs/img2.png)
+   ![event detail](./docs/img2.PNG)
 
 In here I display some basic information such as short name, start date, end date, type, state ...
 
@@ -41,7 +41,7 @@ After checking api doc, I understand that I will use 2 apis:
 
 Below is how I manage data, so no need to call the same api to get the same data everytime.
 
-![](./docs/img3.png)
+![](./docs/img3.PNG)
 
 - Case 1: User goes to /events/<id>: check if there is any data for that event's id, if YES, serve it ! Otherwise, call api and store it into store.
 - Case 2 : User goes to /sport/<sport_category>: call api to get popular events ID first. For each event's id, call api to get event's information (always get the latest)
