@@ -12,6 +12,12 @@ When click on event, it will direct you to event detail page.
 
 In here I display some basic information such as short name, start date, end date, type, state ...
 
+3. Edge case:
+   If user access invalid page:
+
+- `/sport/abc`: will be redirect to `/`
+- `/event/123`: will show NO DATA
+
 ### How to test
 
 - Clone the project
